@@ -2,6 +2,27 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.tar.gz
+*.zip
+build/
+dist/
+*.DS_Store
+*.code-workspace
+*.h5
+.ico
+.png
+.spec
+.tflite
+*.tar
+*.pb
+assets/
+variables/
+variables.*
+list/
+saved/
+example/
+mine/
+tests/
 
 # C extensions
 *.so
