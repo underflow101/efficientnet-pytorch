@@ -4,9 +4,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-def conv_bn_act(in_, out_, kernel_size,
-                stride=1, groups=1, bias=True,
-                eps=1e-3, momentum=0.01):
+def conv_bn_act(in_, out_, kernel_size, stride=1, groups=1, bias=True, eps=1e-3, momentum=0.01):
     return nn.Sequential(
         SamePadConv2d(in_, out_, kernel_size, stride, groups=groups, bias=bias),
         nn.BatchNorm2d(out_, eps, momentum),
@@ -81,9 +79,7 @@ class DropConnect(nn.Module):
         return x / self.ratio * random_tensor.floor()
 
 class MBConv(nn.Module):
-    def __init__(self, in_, out_, expand,
-                 kernel_size, stride, skip,
-                 se_ratio, dc_ratio=0.2):
+    def __init__(self, in_, out_, expand, kernel_size, stride, skip, se_ratio, dc_ratio=0.2):
         super().__init__()
         mid_ = in_ * expand
         self.expand_conv = conv_bn_act(in_, mid_, kernel_size=1, bias=False) if expand != 1 else nn.Identity()
@@ -125,11 +121,9 @@ class MBBlock(nn.Module):
 
 
 class EfficientNet(nn.Module):
-    def __init__(self, width_coeff, depth_coeff,
-                 depth_div=8, min_depth=None,
-                 dropout_rate=0.2, drop_connect_rate=0.2,
-                 num_classes=1000):
+    def __init__(self, width_coeff, depth_coeff, depth_div=8, min_depth=None, dropout_rate=0.2, drop_connect_rate=0.2, num_classes=1000):
         super().__init__()
+        
         min_depth = min_depth or depth_div
         
         def renew_ch(x):
