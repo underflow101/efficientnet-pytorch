@@ -1,3 +1,10 @@
+#####################################################################
+# model.py
+#
+# Dev. Dongwon Paek
+# Description: PyTorch model file of EfficientNet
+#####################################################################
+
 import math
 
 import torch
@@ -121,7 +128,7 @@ class MBBlock(nn.Module):
 
 
 class EfficientNet(nn.Module):
-    def __init__(self, width_coeff, depth_coeff, depth_div=8, min_depth=None, dropout_rate=0.2, drop_connect_rate=0.2, num_classes=1000):
+    def __init__(self, width_coeff, depth_coeff, depth_div=8, min_depth=None, dropout_rate=0.2, drop_connect_rate=0.2, num_classes=4):
         super().__init__()
         
         min_depth = min_depth or depth_div
