@@ -1,5 +1,5 @@
 #####################################################################
-# hyper.py
+# hyperparameter.py
 #
 # Dev. Dongwon Paek
 # Description: PyTorch model file of EfficientNet
